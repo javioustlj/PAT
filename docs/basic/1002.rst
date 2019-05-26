@@ -1,0 +1,122 @@
+1002 写出这个数 (20 分)
+=========================
+
+读入一个正整数 n，计算其各位数字之和，用汉语拼音写出和的每一位数字。
+
+**输入格式**:
+
+每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10​100​​。
+
+**输出格式**:
+
+在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。
+
+**输入样例**::
+
+    1234567890987654321123456789
+
+**输出样例**::
+
+    yi san wu
+
+**解析**:
+
+1. 使用字符串接受输入
+2. 字符串中字符对应数字累加
+3. 获得累加数字的每一位，输出对应汉语拼音
+
+**C**
+
+.. code-block:: c
+   :linenos:
+
+   #include<stdio.h>
+
+   int main(void)
+   {
+   	       int sum = 0, cnt = 0, a[4] = {0};
+   	       char str[104] = {0};
+   	       char numstr[10][8] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
+
+   	       scanf("%s", str);
+
+   	       for (int i = 0; str[i] != '\0'; ++i)
+   	               sum += str[i] - '0';
+   	       do {
+   	               a[cnt++] = sum % 10;
+   	       } while(sum /= 10);
+
+   	       while (cnt--)
+   	               printf("%s%c", numstr[a[cnt]], cnt ? ' ' : '\n');
+
+   	       return 0;
+   }
+
+**C++**
+
+*方法一*
+
+.. code-block:: c++
+   :linenos:
+
+   #include<iostream>
+   #include<vector>
+   #include<string>
+
+   using namespace std;
+
+   int main(void)
+   {
+       string s;
+       cin >> s;
+
+       int sum{0};
+       for (auto c : s)
+           sum += c - '0';
+       vector<int> index;
+       while (sum) {
+           index.push_back(sum % 10);
+           sum /= 10;
+       }
+
+       string numstr[] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
+       for (auto it = index.rbegin(); it != index.rend(); ++it) {
+           cout << numstr[*it];
+           if (it + 1 != index.rend())
+               cout << ' ';
+       }
+       cout << endl;
+
+       return 0;
+   }
+
+*方法二*
+
+.. code-block:: c++
+   :linenos:
+
+   #include<iostream>
+   #include<string>
+
+   using namespace std;
+
+   int main(void)
+   {
+       string s;
+       cin >> s;
+
+       int sum{0};
+       for (auto c : s)
+           sum += c - '0';
+       string num = to_string(sum);
+
+       string numstr[] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
+       for (auto c : num) {
+           if (c != num[0])
+               cout << ' ';
+           cout << numstr[c - '0'];
+       }
+       cout << endl;
+
+       return 0;
+   }
