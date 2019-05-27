@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1003 我要通过！(20分) &mdash; PAT 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/HTML-CSS"]})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="1002 写出这个数 (20 分)" href="1002.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PAT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">basic</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1001.html">1001. 害死人不偿命的(3n+1)猜想 (15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1002.html">1002  写出这个数 (20 分)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1003 我要通过！(20分)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PAT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">basic</a> &raquo;</li>
+        
+      <li>1003 我要通过！(20分)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/basic/1003.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>1003 我要通过！(20分)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>“答案正确”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“答案正确”大派送 —— 只要读入的字符串满足下列条件，系统就输出“答案正确”，否则输出“答案错误”。</p>
+<p>得到“答案正确”的条件是：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>字符串中必须仅有 P、 A、 T这三种字符，不可以包含其它字符;</p></li>
+<li><p>任意形如 xPATx 的字符串都可以获得“答案正确”，其中 x 或者是空字符串，或者是仅由字母 A 组成的字符串;</p></li>
+<li><p>如果 aPbTc 是正确的，那么 aPbATca 也是正确的，其中 a、b、c 均或者是空字符串，或者是仅由字母 A 组成的字符串。</p></li>
+</ol>
+</div></blockquote>
+<p>现在就请你为 PAT 写一个自动裁判程序，判定哪些字符串是可以获得“答案正确”的。</p>
+<p><strong>输入格式：</strong></p>
+<p>每个测试输入包含 1 个测试用例。第 1 行给出一个正整数 n (&lt;10)，是需要检测的字符串个数。接下来每个字符串占一行，字符串长度不超过 100，且不包含空格。</p>
+<p><strong>输出格式：</strong></p>
+<p>每个字符串的检测结果占一行，如果该字符串可以获得“答案正确”，则输出 YES，否则输出 NO。</p>
+<p><strong>输入样例</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span>
+<span class="n">PAT</span>
+<span class="n">PAAT</span>
+<span class="n">AAPATAA</span>
+<span class="n">AAPAATAAAA</span>
+<span class="n">xPATx</span>
+<span class="n">PT</span>
+<span class="n">Whatever</span>
+<span class="n">APAAATAA</span>
+</pre></div>
+</div>
+<p><strong>输出样例</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">YES</span>
+<span class="n">YES</span>
+<span class="n">YES</span>
+<span class="n">YES</span>
+<span class="n">NO</span>
+<span class="n">NO</span>
+<span class="n">NO</span>
+<span class="n">NO</span>
+</pre></div>
+</div>
+<p><strong>解析：</strong></p>
+<p>理解题意是此题的关键。此题的条件2、条件3、就是数学归纳法的初始条件和递推公式。</p>
+<p>初始条件为xPATx是正确的；</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_1 &amp;= x \\
+b_1 &amp;= 1 \\
+c_1 &amp;= x\end{split}\]</div>
+<p>递归公式是，如果aPbTc是正确的，那么aPbATca是正确的；</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_k &amp;= a_{k-1} \\
+b_k &amp;= b_{k-1}+1 \\
+c_k &amp;= c_{k-1} + a_{k-1}\end{split}\]</div>
+<p>显然，<span class="math notranslate nohighlight">\({a_n}\)</span> 是常数数列，<span class="math notranslate nohighlight">\(b_n\)</span> 和 <span class="math notranslate nohighlight">\(c_n\)</span> 都是等差数列由此可得通项公式：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_n &amp;= x \\
+b_n &amp;= n \\
+c_n &amp;= n * x;\end{split}\]</div>
+<p>故最后得出 满足下列条件的字符串正确:</p>
+<ul class="simple">
+<li><p>不出现其他字符</p></li>
+<li><p>有且仅有一个字符’P’，有且仅有一个字符’T’</p></li>
+<li><p>b != 0</p></li>
+<li><p>a * b == c</p></li>
+</ul>
+<p><strong>C</strong></p>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;stdbool.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define N 10</span>
+
+<span class="kt">bool</span> <span class="nf">isRight</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">bool</span> <span class="n">p</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="sc">&#39;P&#39;</span><span class="o">:</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                                <span class="n">p</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                        <span class="p">}</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="sc">&#39;A&#39;</span><span class="o">:</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="o">++</span><span class="n">c</span><span class="p">;</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="o">++</span><span class="n">b</span><span class="p">;</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="o">++</span><span class="n">a</span><span class="p">;</span>
+                        <span class="p">}</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="sc">&#39;T&#39;</span><span class="o">:</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span> <span class="o">||</span> <span class="n">t</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+                        <span class="n">t</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="k">default</span><span class="o">:</span>
+                        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">t</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">&amp;&amp;</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span>
+                <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="mi">104</span><span class="p">];</span>
+
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">isRight</span><span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;YES</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                <span class="k">else</span>
+                        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;NO</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>C++</strong></p>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">isCorrect</span><span class="p">(</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="n">b</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="n">c</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="kt">bool</span> <span class="n">p</span><span class="p">{</span><span class="nb">false</span><span class="p">},</span> <span class="n">t</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">ch</span> <span class="p">:</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="sc">&#39;P&#39;</span><span class="o">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">&#39;A&#39;</span><span class="o">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">)</span>
+                <span class="o">++</span><span class="n">a</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">t</span><span class="p">)</span>
+                <span class="o">++</span><span class="n">b</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span>
+                <span class="o">++</span><span class="n">c</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">&#39;T&#39;</span><span class="o">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">t</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">&amp;&amp;</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">input</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">s</span> <span class="p">:</span> <span class="n">input</span><span class="p">)</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">s</span> <span class="p">:</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isCorrect</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;YES&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;NO&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="1002.html" class="btn btn-neutral float-left" title="1002 写出这个数 (20 分)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Javious
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
