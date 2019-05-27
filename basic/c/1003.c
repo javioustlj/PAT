@@ -12,7 +12,7 @@ bool isRight(const char *str)
         while (str[i] != '\0') {
                 switch (str[i]) {
                 case 'P':
-                        if (p) { 
+                        if (p) {
                                 return false;
                         } else {
                                 p = true;
