@@ -1,0 +1,117 @@
+1004 成绩排名 (20分)
+======================
+
+读入 n（>0）名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。
+
+**输入格式：**
+
+每个测试输入包含 1 个测试用例，格式为::
+
+    第 1 行：正整数 n
+    第 2 行：第 1 个学生的姓名 学号 成绩
+    第 3 行：第 2 个学生的姓名 学号 成绩
+      ... ... ...
+    第 n+1 行：第 n 个学生的姓名 学号 成绩
+
+其中 *姓名* 和 *学号* 均为不超过 10 个字符的字符串，成绩为 0 到 100 之间的一个整数，这里保证在一组测试用例中没有两个学生的成绩是相同的。
+
+**输出格式：**
+
+对每个测试用例输出 2 行，第 1 行是成绩最高学生的姓名和学号，第 2 行是成绩最低学生的姓名和学号，字符串间有 1 空格。
+
+**输入样例**::
+
+    3
+    Joe Math990112 89
+    Mike CS991301 100
+    Mary EE990830 95
+
+**输出样例**::
+
+    Mike CS991301
+    Joe Math990112
+
+**解析**
+
+此题非常简单，就是求最大最小值的问题。
+
+在此想说明一下为什么不在读取数据的循环里直接处理，而是用一个数组存起来然后再去处理数据。
+这样做的原因是这样使程序结构更清晰，更易读。
+
+读取数据--->处理数据获得结果--->输出结果
+
+特别是在系统编程的时候，更要考虑读取数据和处理数据的分离。
+
+**C**
+
+.. code-block:: c
+   :linenos:
+
+   #include<stdio.h>
+
+   struct student {
+           char name[12];
+           char ID[12];
+           unsigned score;
+   };
+
+   int main(void)
+   {
+           int n = 0;
+
+           scanf("%d", &n);
+           struct student stu[n];
+           for (int i = 0; i < n; ++i)
+                   scanf("%s %s %d", stu[i].name, stu[i].ID, &stu[i].score);
+
+           struct student *min = &stu[0], *max = &stu[0];
+           for (int i = 0; i < n; ++i) {
+                   if (stu[i].score > max->score)
+                           max = &stu[i];
+                   if (stu[i].score < min->score)
+                           min = &stu[i];
+           }
+
+           printf("%s %s\n", max->name, max->ID);
+           printf("%s %s\n", min->name, min->ID);
+
+           return 0;
+   }
+
+**C++**
+
+.. code-block:: c++
+   :linenos:
+
+   #include<iostream>
+   #include<string>
+
+   using namespace std;
+
+   struct Student {
+       string name;
+       string ID;
+       unsigned score{0};
+   };
+
+   int main(void)
+   {
+       int n;
+       cin >> n;
+       Student stu[n];
+       for (int i = 0; i != n; ++i)
+           cin >> stu[i].name >> stu[i].ID >> stu[i].score;
+
+       Student *minStudent{&stu[0]}, *maxStudent{&stu[0]};
+       for (int i = 0; i != n; ++i) {
+           if (stu[i].score > maxStudent->score)
+               maxStudent = &stu[i];
+           if (stu[i].score < minStudent->score)
+               minStudent = &stu[i];
+       }
+
+       cout << maxStudent->name << ' ' << maxStudent->ID << endl;
+       cout << minStudent->name << ' ' << minStudent->ID << endl;
+
+       return 0;
+   }
