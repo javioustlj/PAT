@@ -1,29 +1,30 @@
 #include<stdio.h>
-#include<string.h>
+
+struct student {
+        char name[12];
+        char ID[12];
+        unsigned score;
+};
 
 int main(void)
 {
-        int n = 0; 
-        int score = 0, max = 0, min = 100;
-        char name[12], maxName[12], minName[12];
-        char ID[12], maxID[12], minID[12];
+        int n = 0;
 
         scanf("%d", &n);
+        struct student stu[n];
+        for (int i = 0; i < n; ++i)
+                scanf("%s %s %d", stu[i].name, stu[i].ID, &stu[i].score);
+
+        struct student *min = &stu[0], *max = &stu[0];
         for (int i = 0; i < n; ++i) {
-                scanf("%s %s %d", name, ID, &score);
-                if (score >= max) {
-                        max = score;
-                        strcpy(maxName, name);
-                        strcpy(maxID, ID);
-                }
-                if (score <= min) {
-                        min = score;
-                        strcpy(minName, name);
-                        strcpy(minID, ID);
-                }
+                if (stu[i].score > max->score)
+                        max = &stu[i];
+                if (stu[i].score < min->score)
+                        min = &stu[i];
         }
-        printf("%s %s\n", maxName, maxID);
-        printf("%s %s\n", minName, minID);
+
+        printf("%s %s\n", max->name, max->ID);
+        printf("%s %s\n", min->name, min->ID);
 
         return 0;
 }
