@@ -79,7 +79,7 @@
 
 *方法二*
 
-.. code-block::
+.. code-block:: c
    :linenos:
 
    #include<stdio.h>
