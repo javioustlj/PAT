@@ -1,0 +1,84 @@
+1008 数组元素循环右移问题 (20分)
+==================================
+
+一个数组A中存有 :math:`N (> 0)` 个整数，在不允许使用另外数组的前提下，将每个整数
+循环向右移 :math:`M (≥ 0)` 个位置，即将A中的数据由 :math:`(A_0A_1···A_{N−1})` 变
+换为 :math:`(A_{N-M}···A_{N-1}A_0A_1···A_{N-M-1})` （最后M个数循环移至最前面的M个
+位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？
+
+**输入格式:**
+
+每个输入包含一个测试用例，第1行输入N（1≤N≤100）和 M（≥0）；第2行输入N个整数，之间用空格分隔。
+
+**输出格式:**
+
+在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。
+
+**输入样例**::
+
+  6 2
+  1 2 3 4 5 6
+
+**输出样例**::
+
+  5 6 1 2 3 4
+
+**解析**
+
+此题无需实际的实现数组的循环右移，只需按照新的下标打印即可。
+
+**C**
+
+.. code-block:: c
+   :linenos:
+
+   #include<stdio.h>
+
+   #define N 100
+
+   int main(void)
+   {
+           int n = 0, m = 0;
+           int a[N] = {0};
+
+           scanf("%d %d", &n, &m);
+           for (int i = 0; i < n; ++i)
+                   scanf("%d", &a[i]);
+
+           m %= n;
+           for (int i = n - m; i < n; ++i)
+                   printf("%d%c", a[i], m == n && i == n - 1 ? '\0' : ' ');
+           for (int i = 0; i < n - m; ++i)
+                   printf("%d%c", a[i], i == n - m - 1 ? '\0' : ' ');
+
+           return 0;
+   }
+
+**C++**
+
+.. code-block:: c++
+   :linenos:
+
+   #include<iostream>
+
+   int main(void)
+   {
+       int n, m;
+       std::cin >> n >> m;
+       int a[n];
+       for (int i = 0; i != n; ++i)
+           std::cin >> a[i];
+
+       for (int i = n - m % n; i != n; ++i) {
+           if (i != n - m % n)
+               std::cout << ' ';
+           std::cout << a[i];
+       }
+       for (int i = 0; i != n - m % n; ++i) {
+           if (i || m % n)
+               std::cout << ' ';
+           std::cout << a[i];
+       }
+
+       return 0;
+   }
