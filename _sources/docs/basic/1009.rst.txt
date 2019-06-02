@@ -1,0 +1,100 @@
+1009 说反话 (20分)
+===================
+
+给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。
+
+**输入格式：**
+
+测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。
+
+**输出格式：**
+
+每个测试用例的输出占一行，输出倒序后的句子。
+
+**输入样例**::
+
+  Hello World Here I Come
+
+**输出样例**::
+
+  Come I Here World Hello
+
+**解析**
+
+将单词逆序输出，使用栈是最方便的。
+
+对于C++来说，使用string stack即可。
+
+对于C来说，第一没有string类，你不知道一个单词到底有多长，需要多长的字符数组，
+第二没有stack，这个你也不知道有多少个单词。所以采取逐一处理字符反而是更方便的。
+
+- 将一行作为字符串读入
+- 从字符串尾向前搜索，读到空格则输出单词
+
+**C**
+
+.. code-block:: c
+   :linenos:
+
+   #include<stdio.h>
+   #include<string.h>
+   #include<ctype.h>
+
+   int main(void)
+   {
+           int index = 0, k = 0;
+           char str[84];
+           char output[84];
+
+           fgets(str, 81, stdin);
+           index = strlen(str);
+           for (int i = strlen(str) - 1; i >= 0; --i) {
+                   if (str[i] == '\n') {
+                           index = i;
+                           continue;
+                   }
+                   if (isspace(str[i])) {
+                           for (int j = i + 1; j < index; ++j) {
+                                   output[k++] = str[j];
+                           }
+                           output[k++] = str[i];
+                           index = i;
+                   }
+                   if (!i) {
+                           for (int j = 0; j < index; ++j) {
+                                   output[k++] = str[j];
+                           }
+                           output[k++] = '\0';
+                   }
+           }
+           printf("%s\n", output);
+
+           return 0;
+   }
+
+**C++**
+
+.. code-block:: c++
+   :linenos:
+
+   #include<iostream>
+   #include<stack>
+   #include<string>
+
+   int main(void)
+   {
+       std::string s;
+       std::stack<std::string> ans;
+       while (std::cin >> s)
+           ans.push(s);
+
+       while (!ans.empty()) {
+           std::cout << ans.top();
+           ans.pop();
+           if (!ans.empty())
+               std::cout << ' ';
+       }
+       std::cout << std::endl;
+
+       return 0;
+   }
