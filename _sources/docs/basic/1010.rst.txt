@@ -1,0 +1,94 @@
+1010 一元多项式求导 (25分)
+==============================
+
+设计函数求一元多项式的导数。（注： :math:`x^n` （n为整数）的一阶导数为 :math:`n*x^n−1` 。）
+
+**输入格式:**
+
+以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。
+
+**输出格式:**
+
+以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能
+有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。
+
+**输入样例**::
+
+  3 4 -5 2 6 1 -2 0
+
+**输出样例**::
+
+  12 3 -10 1 6 0
+
+**解析**
+
+此题最简单的方法就是::
+
+  输入一组数据--->处理这组数据--->输出处理后的数据
+
+另一种解法是获得所有输入后，处理数据，输出数据。
+
+C采用第一种解法，C++采用第二种解法。
+
+*注意* 单独处理零多项式。
+
+**C**
+
+.. code-block:: c
+   :linenos:
+
+   #include<stdio.h>
+
+   int main(void)
+   {
+           int a = 0, n = 0;
+
+           scanf("%d %d", &a, &n);
+           if (n)
+                   printf("%d %d", a * n, n - 1);
+           else
+           {
+                   printf("%d %d", 0, 0);
+                   return 0;
+           }
+           while (EOF != scanf("%d %d", &a, &n))
+                   if (n)
+                           printf(" %d %d", a * n, n - 1);
+
+           return 0;
+   }
+
+**C++**
+
+.. code-block:: c++
+   :linenos:
+
+   #include<iostream>
+   #include<map>
+
+   int main(void)
+   {
+       int coefficient, index;
+       std::map<int, int> poly;
+       std::map<int, int> derivative;
+       while (std::cin >> coefficient >> index)
+           poly[index] = coefficient;
+
+       if (poly.size() == 1 && poly.count(0)) {
+           std::cout << "0 0" << std::endl;
+           return 0;
+       }
+       for (const auto &c : poly) {
+           int t = c.first * c.second;
+           if (t)
+               derivative.insert({c.first - 1, t});
+       }
+       for (auto it = derivative.crbegin(); it != derivative.crend(); ++it) {
+           if (it != derivative.crbegin())
+               std::cout << ' ';
+           std::cout << (*it).second << ' ' << (*it).first;
+       }
+       std::cout << std::endl;
+
+       return 0;
+   }
